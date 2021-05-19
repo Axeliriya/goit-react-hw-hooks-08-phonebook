@@ -22,8 +22,6 @@ export const routes = [
     label: 'Home',
     component: HomePage,
     exact: true,
-    // logged: false,
-    // restricted: false,
     userNav: true,
     authNav: true,
   },
@@ -62,53 +60,7 @@ export const routes = [
     label: 'Error',
     component: ErrorPage,
     exact: false,
-    // logged: true,
-    // restricted: false,
     userNav: false,
     authNav: false,
   },
 ];
-
-// export const routesAuthNav = [
-//   {
-//     path: '/',
-//     label: 'Home',
-//     component: HomePage,
-//     exact: true,
-//     logged: false,
-//   },
-//   {
-//     path: '/login',
-//     label: 'SignIn',
-//     component: SignInPage,
-//     exact: false,
-//     logged: false,
-//   },
-// ];
-
-// export const routesUserNav = [
-//   {
-//     path: '/',
-//     label: 'Home',
-//     component: HomePage,
-//     exact: true,
-//     logged: true,
-//   },
-//   {
-//     path: '/phonebook',
-//     label: 'Phonebook',
-//     component: PhonebookPage,
-//     exact: false,
-//     logged: true,
-//   },
-// ];
-
-// export const routesRegister = [
-//   {
-//     path: '/registration',
-//     label: 'SignUp',
-//     component: SignUpPage,
-//     exact: false,
-//     logged: false,
-//   },
-// ];

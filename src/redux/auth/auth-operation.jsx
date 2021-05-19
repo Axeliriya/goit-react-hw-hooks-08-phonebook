@@ -1,6 +1,7 @@
 import axios from 'axios';
 import apiService from '../../service/service-api';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   registerRequest,
   registerSuccess,
@@ -31,6 +32,7 @@ export const register = credentials => async dispatch => {
   try {
     const { data } = await apiService.registerUser(credentials);
     token.set(data.token);
+    toast.success('Success');
     dispatch(registerSuccess(data));
   } catch (error) {
     toast.error(error.message);
@@ -45,6 +47,7 @@ export const logIn = credentials => async dispatch => {
     const { data } = await apiService.logInUser(credentials);
 
     token.set(data.token);
+    toast.success('Success');
     dispatch(loginSuccess(data));
   } catch (error) {
     toast.error(error.message);
@@ -59,6 +62,7 @@ export const logOut = () => async dispatch => {
     await apiService.logOutUser();
 
     token.unset();
+    toast.success('Success');
     dispatch(logoutSuccess());
   } catch (error) {
     toast.error(error.message);

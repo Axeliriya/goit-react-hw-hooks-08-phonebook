@@ -4,6 +4,7 @@ import { Suspense, lazy, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { routes } from './routes';
 import Loader from 'react-loader-spinner';
+import { ToastContainer } from 'react-toastify';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import AppBar from './components/AppBar';
 import Container from './components/Container';
@@ -80,6 +81,7 @@ export default function App() {
           </Switch>
         </Suspense>
       </Container>
+      <ToastContainer />
     </>
   );
 }

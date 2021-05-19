@@ -27,7 +27,7 @@ export default function PrivateRoute({ component: Component, ...routeProps }) {
             <Loader type="Rings" color="#999999" height={80} width={80} />
           </div>
         ) : isLoggedOn && routeProps.restricted ? (
-          <Redirect to="/phonebook" />
+          <Redirect to="/contacts" />
         ) : (
           <Component {...props} />
         )

@@ -1,6 +1,6 @@
 export const getLoggedOn = state => state.auth.isLoggedOn;
 
-export const getUserName = state => state.auth.name;
+export const getUserName = state => state.auth.user.name;
 
 export const getUserToken = state => state.auth.token;
 

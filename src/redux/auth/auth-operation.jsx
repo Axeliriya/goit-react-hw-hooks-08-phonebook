@@ -1,5 +1,6 @@
 import axios from 'axios';
 import apiService from '../../service/service-api';
+import { toast } from 'react-toastify';
 import {
   registerRequest,
   registerSuccess,
@@ -32,6 +33,7 @@ export const register = credentials => async dispatch => {
     token.set(data.token);
     dispatch(registerSuccess(data));
   } catch (error) {
+    toast.error(error.message);
     dispatch(registerError(error.message));
   }
 };
@@ -45,6 +47,7 @@ export const logIn = credentials => async dispatch => {
     token.set(data.token);
     dispatch(loginSuccess(data));
   } catch (error) {
+    toast.error(error.message);
     dispatch(loginError(error.message));
   }
 };
@@ -58,6 +61,7 @@ export const logOut = () => async dispatch => {
     token.unset();
     dispatch(logoutSuccess());
   } catch (error) {
+    toast.error(error.message);
     dispatch(logoutError(error.message));
   }
 };
@@ -77,8 +81,10 @@ export const currentUser = () => async (dispatch, getState) => {
 
   try {
     const { data } = await apiService.getCurrentUser();
+
     dispatch(getCurrentUserSuccess(data));
   } catch (error) {
+    toast.error(error.message);
     dispatch(getCurrentUserError(error.message));
   }
 };

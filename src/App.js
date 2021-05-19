@@ -1,4 +1,4 @@
-import './styles.css';
+import './normalize.min.css';
 
 import { Suspense, lazy, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
@@ -11,12 +11,23 @@ import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import { useDispatch } from 'react-redux';
 import { currentUser } from './redux/auth/auth-operation';
+import { createUseStyles } from 'react-jss';
+
+const useStyles = createUseStyles({
+  spinner: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+  },
+});
 
 const ErrorPage = lazy(() =>
   import('./views/ErrorPage' /*webpackChunkName: "error-page" */),
 );
 
 export default function App() {
+  const styles = useStyles();
   const dispatch = useDispatch();
   const onRefresh = () => {
     dispatch(currentUser());
@@ -33,13 +44,8 @@ export default function App() {
       <Container>
         <Suspense
           fallback={
-            <div className="PosSpinnerLoad">
-              <Loader
-                type="ThreeDots"
-                color="#999999"
-                height={50}
-                width={150}
-              />
+            <div className={styles.spinner}>
+              <Loader type="Rings" color="#999999" height={80} width={80} />
             </div>
           }
         >

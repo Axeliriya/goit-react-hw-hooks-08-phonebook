@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialUserState = {
-  name: null,
-  email: null,
+  user: null,
   token: null,
   error: null,
   isLoggedOn: false,
@@ -17,8 +16,7 @@ const { actions, reducer } = createSlice({
       state.isLoading = true;
     },
     registerSuccess: (state, { payload }) => {
-      state.name = payload.user.name;
-      state.email = payload.user.email;
+      state.user = payload.user;
       state.token = payload.token;
       state.isLoading = false;
       state.isLoggedOn = true;
@@ -32,8 +30,7 @@ const { actions, reducer } = createSlice({
       state.isLoading = true;
     },
     loginSuccess: (state, { payload }) => {
-      state.name = payload.user.name;
-      state.email = payload.user.email;
+      state.user = payload.user;
       state.token = payload.token;
       state.isLoading = false;
       state.isLoggedOn = true;
@@ -47,8 +44,7 @@ const { actions, reducer } = createSlice({
       state.isLoading = true;
     },
     logoutSuccess: state => {
-      state.name = null;
-      state.email = null;
+      state.user = null;
       state.token = null;
       state.isLoading = false;
       state.isLoggedOn = false;
@@ -61,8 +57,7 @@ const { actions, reducer } = createSlice({
       state.isLoading = true;
     },
     getCurrentUserSuccess: (state, { payload }) => {
-      state.email = payload.email;
-      state.name = payload.name;
+      state.user = payload;
       state.isLoading = false;
       state.isLoggedOn = true;
     },

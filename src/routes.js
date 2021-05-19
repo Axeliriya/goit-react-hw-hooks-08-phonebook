@@ -26,7 +26,7 @@ export const routes = [
     authNav: true,
   },
   {
-    path: '/phonebook',
+    path: '/contacts',
     label: 'Phonebook',
     component: PhonebookPage,
     exact: false,
@@ -46,7 +46,7 @@ export const routes = [
     authNav: true,
   },
   {
-    path: '/registration',
+    path: '/register',
     label: 'SignUp',
     component: SignUpPage,
     exact: false,

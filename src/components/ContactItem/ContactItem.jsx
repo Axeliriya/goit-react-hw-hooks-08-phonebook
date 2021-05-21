@@ -1,65 +1,13 @@
 // import PropTypes from 'prop-types';
+import styles from './ContactItem.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from '../../redux/contacts/contacts-operation';
-import { getVisibleContacts } from '../../redux/contacts/contacts-selectors';
-import { createUseStyles } from 'react-jss';
-
-const useStyles = createUseStyles({
-  button: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 30,
-    height: 30,
-    border: 'none',
-    backgroundColor: 'transparent',
-    outline: 'none',
-    padding: 0,
-    marginLeft: 'auto',
-    cursor: 'pointer',
-  },
-
-  svg: {
-    fill: 'rgb(76, 175, 80, 0.8)',
-    '&:hover': {
-      fill: 'rgb(76, 175, 80)',
-    },
-  },
-
-  item: {
-    marginBottom: 10,
-    fontSize: 16,
-    display: 'flex',
-    alignItems: 'center',
-    padding: '0 10px',
-    backgroundColor: '#f1f1f1',
-  },
-
-  link: {
-    textDecoration: 'none',
-    color: 'dodgerblue',
-  },
-
-  name: {
-    display: 'block',
-    marginRight: 5,
-    padding: '5px 0',
-  },
-
-  number: {
-    display: 'block',
-    padding: '5px 0',
-  },
-});
+import { contactsOperations, contactsSelectors } from '../../redux/contacts';
 
 export default function ContactItem() {
-  const styles = useStyles();
   const dispatch = useDispatch();
-  const contacts = useSelector(getVisibleContacts).sort((a, b) =>
-    a.name.localeCompare(b.name),
-  );
+  const contacts = useSelector(contactsSelectors.getVisibleContacts);
 
-  const onDeleteContact = id => dispatch(deleteContact(id));
+  const onDeleteContact = id => dispatch(contactsOperations.deleteContact(id));
 
   return (
     <>

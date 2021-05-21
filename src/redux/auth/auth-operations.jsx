@@ -2,20 +2,7 @@ import axios from 'axios';
 import apiService from '../../service/service-api';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {
-  registerRequest,
-  registerSuccess,
-  registerError,
-  loginRequest,
-  loginSuccess,
-  loginError,
-  logoutRequest,
-  logoutSuccess,
-  logoutError,
-  getCurrentUserRequest,
-  getCurrentUserSuccess,
-  getCurrentUserError,
-} from '../auth';
+import { authSlice } from '.';
 
 const token = {
   set(token) {
@@ -26,51 +13,48 @@ const token = {
   },
 };
 
-export const register = credentials => async dispatch => {
-  dispatch(registerRequest());
+const register = credentials => async dispatch => {
+  dispatch(authSlice.actions.registerRequest());
 
   try {
     const { data } = await apiService.registerUser(credentials);
     token.set(data.token);
-    toast.success('Success');
-    dispatch(registerSuccess(data));
+    dispatch(authSlice.actions.registerSuccess(data));
   } catch (error) {
     toast.error(error.message);
-    dispatch(registerError(error.message));
+    dispatch(authSlice.actions.registerError(error.message));
   }
 };
 
-export const logIn = credentials => async dispatch => {
-  dispatch(loginRequest());
+const logIn = credentials => async dispatch => {
+  dispatch(authSlice.actions.loginRequest());
 
   try {
     const { data } = await apiService.logInUser(credentials);
 
     token.set(data.token);
-    toast.success('Success');
-    dispatch(loginSuccess(data));
+    dispatch(authSlice.actions.loginSuccess(data));
   } catch (error) {
     toast.error(error.message);
-    dispatch(loginError(error.message));
+    dispatch(authSlice.actions.loginError(error.message));
   }
 };
 
-export const logOut = () => async dispatch => {
-  dispatch(logoutRequest());
+const logOut = () => async dispatch => {
+  dispatch(authSlice.actions.logoutRequest());
 
   try {
     await apiService.logOutUser();
 
     token.unset();
-    toast.success('Success');
-    dispatch(logoutSuccess());
+    dispatch(authSlice.actions.logoutSuccess());
   } catch (error) {
     toast.error(error.message);
-    dispatch(logoutError(error.message));
+    dispatch(authSlice.actions.logoutError(error.message));
   }
 };
 
-export const currentUser = () => async (dispatch, getState) => {
+const currentUser = () => async (dispatch, getState) => {
   const {
     auth: { token: persistedToken },
   } = getState();
@@ -81,14 +65,17 @@ export const currentUser = () => async (dispatch, getState) => {
 
   token.set(persistedToken);
 
-  dispatch(getCurrentUserRequest());
+  dispatch(authSlice.actions.getCurrentUserRequest());
 
   try {
     const { data } = await apiService.getCurrentUser();
 
-    dispatch(getCurrentUserSuccess(data));
+    dispatch(authSlice.actions.getCurrentUserSuccess(data));
   } catch (error) {
     toast.error(error.message);
-    dispatch(getCurrentUserError(error.message));
+    dispatch(authSlice.actions.getCurrentUserError(error.message));
   }
 };
+
+// eslint-disable-next-line
+export default { register, logIn, logOut, currentUser };

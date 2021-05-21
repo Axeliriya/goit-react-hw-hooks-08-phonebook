@@ -1,22 +1,12 @@
+import styles from './PrivetPoute.module.css';
 import Loader from 'react-loader-spinner';
 import { useSelector } from 'react-redux';
 import { Redirect, Route } from 'react-router';
-import { getLoading, getLoggedOn } from './redux/auth/auth-selectors';
-import { createUseStyles } from 'react-jss';
-
-const useStyles = createUseStyles({
-  spinner: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-  },
-});
+import { authSelectors } from '../../redux/auth';
 
 export default function PrivateRoute({ component: Component, ...routeProps }) {
-  const styles = useStyles();
-  const isLoggedOn = useSelector(getLoggedOn);
-  const isLoading = useSelector(getLoading);
+  const isLoggedOn = useSelector(authSelectors.getLoggedOn);
+  const isLoading = useSelector(authSelectors.getLoading);
 
   return (
     <Route

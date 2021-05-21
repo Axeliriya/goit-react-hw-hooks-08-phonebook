@@ -1,64 +1,14 @@
+import styles from "./ContactForm.module.css";
 import { useState } from 'react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/contacts/contacts-operation';
-import { getAllContacts } from '../../redux/contacts/contacts-selectors';
-import { createUseStyles } from 'react-jss';
+import { contactsOperations, contactsSelectors } from '../../redux/contacts';
 
-const useStyles = createUseStyles({
-  form: {
-    width: 270,
-    padding: 15,
-    fontSize: 20,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    marginBottom: 30,
-    border: '1px solid black',
-  },
-
-  lable: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 20,
-    fontSize: 16,
-  },
-
-  input: {
-    width: 240,
-    height: 35,
-    padding: '4px 10px',
-    marginTop: 5,
-    background: '#ffffff',
-    border: '1px solid #cacaca',
-    fontSize: 14,
-    letterSpacing: '0.01rem',
-    borderRadius: 5,
-    outline: 'none',
-  },
-
-  btn: {
-    backgroundColor: '#4caf50',
-    color: 'white',
-    padding: '16px 20px',
-    margin: '8px 0',
-    border: 'none',
-    cursor: 'pointer',
-    width: '100%',
-    fontSize: 16,
-    fontWeight: 400,
-    opacity: 0.9,
-    '&:hover': {
-      opacity: 1,
-    },
-  },
-});
 
 export default function ContactForm() {
-  const styles = useStyles();
   const dispatch = useDispatch();
-  const contacts = useSelector(getAllContacts);
+  const contacts = useSelector(contactsSelectors.getAllContacts);
 
   const [name, setName] = useState('');
 
@@ -73,8 +23,7 @@ export default function ContactForm() {
   }
 
   const onSubmit = contact => {
-    console.log(contact);
-    dispatch(addContact(contact));
+    dispatch(contactsOperations.addContact(contact));
   };
 
   const handleSubmit = event => {

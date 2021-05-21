@@ -1,40 +1,14 @@
-// import styles from './Filter.module.css';
-import { createUseStyles } from 'react-jss';
+import styles from './Filter.module.css';
 import PropTypes from 'prop-types';
-import { changeFilter } from '../../redux/contacts';
-import { getFilter } from '../../redux/contacts/contacts-selectors';
-
+import { contactsSlice, contactsSelectors } from '../../redux/contacts';
 import { useDispatch, useSelector } from 'react-redux';
 
-const useStyles = createUseStyles({
-  lable: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 20,
-    fontSize: 18,
-  },
-
-  input: {
-    width: '100%',
-    padding: '4px 10px',
-    marginTop: 5,
-    background: '#ffffff',
-    border: '1px solid #cacaca',
-    borderRadius: 5,
-    height: 30,
-    fontSize: 12,
-    letterSpacing: '0.01rem',
-    outline: 'none',
-  },
-});
-
 export default function Filter() {
-  const styles = useStyles();
   const dispatch = useDispatch();
-  const filter = useSelector(getFilter);
+  const filter = useSelector(contactsSelectors.getFilter);
 
   const onChange = e => {
-    dispatch(changeFilter(e.target.value));
+    dispatch(contactsSlice.changeFilter(e.target.value));
   };
 
   return (

@@ -1,37 +1,26 @@
-import './normalize.min.css';
-
+import '../../assets/styles/normalize.min.css';
+import styles from './App.module.css';
 import { Suspense, lazy, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { routes } from './routes';
+import { routes } from '../../routes';
 import Loader from 'react-loader-spinner';
 import { ToastContainer } from 'react-toastify';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
-import AppBar from './components/AppBar';
-import Container from './components/Container';
-import PrivateRoute from './PrivateRoute';
-import PublicRoute from './PublicRoute';
+import AppBar from '../AppBar';
+import Container from '../Container';
+import PrivateRoute from '../PrivateRoute';
+import PublicRoute from '../PublicRoute';
 import { useDispatch } from 'react-redux';
-import { currentUser } from './redux/auth/auth-operation';
-import { createUseStyles } from 'react-jss';
-
-const useStyles = createUseStyles({
-  spinner: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-  },
-});
+import { authOperations } from '../../redux/auth';
 
 const ErrorPage = lazy(() =>
-  import('./views/ErrorPage' /*webpackChunkName: "error-page" */),
+  import('../../views/ErrorPage' /*webpackChunkName: "error-page" */),
 );
 
 export default function App() {
-  const styles = useStyles();
   const dispatch = useDispatch();
   const onRefresh = () => {
-    dispatch(currentUser());
+    dispatch(authOperations.currentUser());
   };
 
   useEffect(() => {

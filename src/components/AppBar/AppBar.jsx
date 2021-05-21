@@ -1,10 +1,10 @@
 import UserNav from '../UserNav';
 import AuthNav from '../AuthNav';
 import { useSelector } from 'react-redux';
-import { getLoggedOn } from '../../redux/auth/auth-selectors';
+import { authSelectors } from '../../redux/auth';
 
 export default function AppBar() {
-  const isLoggedOn = useSelector(getLoggedOn);
+  const isLoggedOn = useSelector(authSelectors.getLoggedOn);
 
   return <header>{isLoggedOn ? <UserNav /> : <AuthNav />}</header>;
 }

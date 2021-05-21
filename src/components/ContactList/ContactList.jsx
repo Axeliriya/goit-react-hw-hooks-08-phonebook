@@ -1,16 +1,8 @@
-import ContactItem from '../ContactItem/ContactItem';
-import { createUseStyles } from 'react-jss';
+import styles from './ContactList.module.css';
 
-const useStyles = createUseStyles({
-  list: {
-    listStyle: 'none',
-    padding: 0,
-    margin: 0,
-  },
-});
+import ContactItem from '../ContactItem/ContactItem';
 
 export default function ContactList() {
-  const styles = useStyles();
   return (
     <ul className={styles.list}>
       <ContactItem />

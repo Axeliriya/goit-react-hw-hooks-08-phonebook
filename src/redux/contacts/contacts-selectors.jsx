@@ -1,18 +1,21 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-export const getAllContacts = state => state.contacts.items;
+const getAllContacts = state => state.contacts.items;
 
-export const getFilter = state => state.contacts.filter;
+const getFilter = state => state.contacts.filter;
 
-export const getLoading = state => state.contacts.isLoading;
+const getLoading = state => state.contacts.isLoading;
 
-export const getVisibleContacts = createSelector(
+const getVisibleContacts = createSelector(
   [getAllContacts, getFilter],
   (allContacts, filter) => {
     const normalizedFilter = filter.toLowerCase();
 
-    return allContacts.filter(({ name }) =>
-      name.toLowerCase().includes(normalizedFilter),
-    );
+    return allContacts
+      .filter(({ name }) => name.toLowerCase().includes(normalizedFilter))
+      .sort((a, b) => a.name.localeCompare(b.name));
   },
 );
+
+// eslint-disable-next-line
+export default { getAllContacts, getFilter, getLoading, getVisibleContacts };

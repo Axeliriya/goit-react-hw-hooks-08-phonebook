@@ -9,7 +9,7 @@ const fetchContacts = () => async dispatch => {
     const { data } = await apiService.getFetchContacts();
     dispatch(contactsSlice.actions.fetchContactsSuccess(data));
   } catch (error) {
-    toast.error(error?.response?.data?.message || error.message);
+    toast.error(error.message);
     dispatch(contactsSlice.actions.fetchContactsError(error.message));
   }
 };
@@ -21,7 +21,8 @@ const addContact = contact => async dispatch => {
     const { data } = await apiService.addContact(contact);
     dispatch(contactsSlice.actions.addContactSuccess(data));
   } catch (error) {
-    toast.error(error?.response?.data?.message || error.message);
+    console.dir(error);
+    toast.error(error.message);
     dispatch(contactsSlice.actions.addContactError(error.message));
   }
 };
@@ -33,7 +34,7 @@ const deleteContact = contactId => async dispatch => {
     await apiService.deleteContact(contactId);
     dispatch(contactsSlice.actions.deleteContactSuccess(contactId));
   } catch (error) {
-    toast.error(error?.response?.data?.message || error.message);
+    toast.error(error.message);
     dispatch(contactsSlice.actions.deleteContactError(error.message));
   }
 };

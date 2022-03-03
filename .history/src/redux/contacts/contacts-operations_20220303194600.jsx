@@ -21,6 +21,7 @@ const addContact = contact => async dispatch => {
     const { data } = await apiService.addContact(contact);
     dispatch(contactsSlice.actions.addContactSuccess(data));
   } catch (error) {
+    console.dir(error);
     toast.error(error?.response?.data?.message || error.message);
     dispatch(contactsSlice.actions.addContactError(error.message));
   }

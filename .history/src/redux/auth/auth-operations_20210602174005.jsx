@@ -72,6 +72,7 @@ const currentUser = () => async (dispatch, getState) => {
 
     dispatch(authSlice.actions.getCurrentUserSuccess(data));
   } catch (error) {
+    toast.error(error.message);
     dispatch(authSlice.actions.getCurrentUserError(error.message));
   }
 };

@@ -1,0 +1,10 @@
+body {
+  background: linear-gradient(222.26deg, #3b1d60 1.22%, #040d3e 106.28%);
+}
+
+.spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}

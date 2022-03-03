@@ -1,0 +1,33 @@
+.lable {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.descr {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #95a1bb;
+}
+
+.input {
+  width: 100%;
+  min-height: 52px;
+  padding: 15px 15px 15px 45px;
+  display: inline-block;
+  border: none;
+  border-radius: 4px;
+  background: rgba(151, 151, 151, 0.1);
+  font-size: 16px;
+  line-height: 1.4;
+  color: #95a1bb;
+}
+
+.input {
+  padding: 15px;
+}
+
+.input:focus {
+  outline: none;
+}

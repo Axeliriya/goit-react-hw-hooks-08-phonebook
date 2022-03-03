@@ -1,0 +1,19 @@
+.phonebook {
+  display: block;
+  padding: 12px 15px;
+  width: 100%;
+}
+
+.spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+@media screen and (min-width: 670px) {
+  .phonebook {
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,121 @@
+.registration {
+  display: block;
+  padding: 12px 15px;
+  width: 100%;
+  color: rgb(56, 56, 56);
+  background-color: rgba(60, 62, 125, 0.19);
+  border-radius: 4px;
+}
+
+.form_input {
+  width: 100%;
+  padding: 15px;
+  display: inline-block;
+  border: none;
+  border-radius: 4px;
+  background: rgba(151, 151, 151, 0.1);
+  font-size: 16px;
+  line-height: 1.4;
+  color: #95a1bb;
+}
+
+.form_input:focus {
+  outline: none;
+}
+
+.form_input_error {
+  width: 100%;
+  padding: 15px;
+  display: inline-block;
+  border: none;
+  border-radius: 4px;
+  background: rgba(255, 0, 0, 0.1);
+  font-size: 16px;
+  line-height: 1.4;
+  color: red;
+}
+
+.form_input::placeholder {
+  font-size: 14px;
+  line-height: 1.43;
+  letter-spacing: 0.2px;
+  opacity: 0.4;
+}
+
+.label {
+  display: block;
+  margin: 5px 0 22px 0;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 1.19;
+  color: #f2994a;
+}
+
+.descr {
+  font-size: 16px;
+  line-height: 1.38;
+  color: #95a1bb;
+}
+
+.subtitle {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.38;
+  color: #f2994a;
+}
+
+.btn {
+  display: block;
+  background-color: #f2994a;
+  color: #fff;
+  padding: 10px 20px;
+  margin: 0;
+  border: 1px solid #f2994a;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.elseLogin {
+  font-size: 16px;
+  line-height: 1.38;
+  color: #95a1bb;
+  text-align: center;
+}
+
+.link {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  letter-spacing: 0.2px;
+  color: #99efd0;
+}
+
+.link:hover {
+  text-decoration-line: underline;
+}
+
+.pass {
+  position: relative;
+}
+
+.showPass {
+  position: absolute;
+  cursor: pointer;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  line-height: 1.6;
+  color: #95a1bb;
+}
